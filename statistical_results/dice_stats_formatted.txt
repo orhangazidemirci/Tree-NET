@@ -1,0 +1,78 @@
+avg_ssim
+Out[250]: 0.91182286
+
+avg_psnr
+Out[251]: 31.81798809842492
+
+avg_mse
+Out[252]: 0.0007015207
+
+==============
+polyppvt
+avg_ssim
+Out[296]: 0.8877456
+
+avg_psnr
+Out[297]: 24.86556447726148
+
+avg_psnr
+Out[298]: 24.86556447726148
+
+old---
+
+avg_mse
+Out[263]: 0.023531748
+
+avg_psnr
+Out[264]: 16.357793576450508
+
+avg_ssim
+Out[265]: 0.4049349
+
+
+
+==============
+ISIC
+
+
+avg_ssim
+Out[272]: 0.7776449
+
+avg_psnr
+Out[273]: 20.758148253553095
+
+avg_mse
+Out[274]: 0.013494157
+
+
+--------------
+
+avg_ssim
+Out[285]: 0.8690689
+
+avg_psnr
+Out[286]: 22.920218467005515
+
+avg_mse
+Out[287]: 0.010072784
+
+
+
+-----------
+
+Table'ı düzenle, Wilcoxon ekle
+SSIM discussionu yoksa ekle, sonuçları daha iyileştirebileceğinden bahset
+Discussionda optimization kısmını düzelt
+
+-----------
+Ne sen bende gıyab oldun,
+Ne de gönle zevalsin,
+Tanrı ne der bilmem ama,
+Yar sen bana helalsin
+
+
+Ürünümün sıfır olmadığını düşünüyorum. Şarj olması çok uzun sürüyor, sarj ömrü kısa. Ve telefon günlük kullanımda aşırı ısınmakta
+
+Orhan Bey, konuyla alakalı yetkili servisle giderek konu ile alakalı tutanak almanız gerekmektedir. Almış olduğunuz tutanak ile birlikte <a href="mailto:destek@pttavm.com">destek@pttavm.com</a> üzerine mail iletirseniz uzman ekiplerim gerekli kontrolleri sağlayıp tarafınıza geri dönüş sağlayacaklardır.
+
+

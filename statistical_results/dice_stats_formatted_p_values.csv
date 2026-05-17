@@ -1,0 +1,7 @@
+Branch,Wilcoxon (Orig vs Tree) p-value,Wilcoxon (Orig vs BSU) p-value,Wilcoxon (BSU vs Tree) p-value,"Friedman (Orig, BSU, Tree) p-value"
+NUnet - CVC-ClinicDB,<0.0001,-,-,-
+NUnet - ISAC_2018,<0.0001,-,-,-
+PolypPVT - CVC-ClinicDB,<0.0001,-,-,-
+PolypPVT - ISAC_2018,<0.0001,-,-,-
+Unet - CVC-ClinicDB,<0.0001,0.8024,<0.0001,<0.0001
+Unet - ISAC_2018,<0.0001,<0.0001,<0.0001,<0.0001
