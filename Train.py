@@ -85,7 +85,7 @@ def test(model, path, dataset, opt):
         smooth = 1
         input_flat = np.reshape(input, (-1))
         target_flat = np.reshape(target, (-1))
-        intersection = (input_flat * target_flat)
+        intersection = (input_flat * target_flat).sum()
         dice = (2 * intersection.sum() + smooth) / (input.sum() + target.sum() + smooth)
         dice = '{:.4f}'.format(dice)
         dice = float(dice)
@@ -360,7 +360,9 @@ if __name__ == '__main__':
                             for arch in experiments["ARCHS"]:
                                 if arch=='pvt' and batch_size==8:
                                     o=1
-                                else:  
+                                elif arch=='UNET' and batch_size==8:  
+                                    o=1
+                                else:
                                     opt.arch=arch
 
                                     print(opt.arch,treenet_mode,batch_size)
