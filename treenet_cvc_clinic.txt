@@ -514,3 +514,432 @@
 [2024-10-27 07:10:53 AM-train.py-INFO:epoch: 99, dataset: Kvasir, dice: 0.8189679999999998]
 [2024-10-27 07:11:16 AM-train.py-INFO:epoch: 99, dataset: CVC-ColonDB, dice: 0.6907668421052625]
 [2024-10-27 07:11:37 AM-train.py-INFO:epoch: 99, dataset: ETIS-LaribPolypDB, dice: 0.48875867346938767]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################### Start Training ####################
+C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py:122: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  images = F.upsample(images, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py:123: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  gts = F.upsample(gts, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\Documents\GitHub\Tree-NET\lib\pvt.py:101: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  edge = F.upsample(edge, (x.size()[-2], x.size()[-1]))
+C:\Users\Orhan\anaconda3\envs\myenv\Lib\site-packages\torch\nn\_reduction.py:60: UserWarning: size_average and reduce args will be deprecated, please use reduction='mean' instead.
+  return get_enum(legacy_get_string(size_average, reduce, emit_warning))
+2026-05-28 19:33:00.669064 Epoch [001/010], Step [0020/0325],  lateral-5: 1.4040]
+2026-05-28 19:33:04.921926 Epoch [001/010], Step [0040/0325],  lateral-5: 1.3647]
+2026-05-28 19:33:09.250045 Epoch [001/010], Step [0060/0325],  lateral-5: 1.3007]
+2026-05-28 19:33:13.618633 Epoch [001/010], Step [0080/0325],  lateral-5: 1.2552]
+2026-05-28 19:33:17.821516 Epoch [001/010], Step [0100/0325],  lateral-5: 1.2141]
+2026-05-28 19:33:22.048072 Epoch [001/010], Step [0120/0325],  lateral-5: 1.1686]
+2026-05-28 19:33:26.104742 Epoch [001/010], Step [0140/0325],  lateral-5: 1.1239]
+2026-05-28 19:33:30.523667 Epoch [001/010], Step [0160/0325],  lateral-5: 1.0892]
+2026-05-28 19:33:34.648835 Epoch [001/010], Step [0180/0325],  lateral-5: 1.0638]
+2026-05-28 19:33:38.936033 Epoch [001/010], Step [0200/0325],  lateral-5: 1.0435]
+2026-05-28 19:33:43.267979 Epoch [001/010], Step [0220/0325],  lateral-5: 1.0131]
+2026-05-28 19:33:47.348312 Epoch [001/010], Step [0240/0325],  lateral-5: 1.0063]
+2026-05-28 19:33:51.435191 Epoch [001/010], Step [0260/0325],  lateral-5: 1.0086]
+2026-05-28 19:33:55.842127 Epoch [001/010], Step [0280/0325],  lateral-5: 0.9840]
+2026-05-28 19:34:00.024843 Epoch [001/010], Step [0300/0325],  lateral-5: 0.9399]
+2026-05-28 19:34:04.321697 Epoch [001/010], Step [0320/0325],  lateral-5: 0.9256]
+2026-05-28 19:34:09.050115 Epoch [001/010], Step [0325/0325],  lateral-5: 0.9300]
+C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py:69: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  res = F.upsample(res + res1 , size=gt.shape, mode='bilinear', align_corners=False)
+ISAC2018 :  0.8312637999999997
+##############################################################################best 0.8323110000000001
+2026-05-28 19:36:44.893277 Epoch [002/010], Step [0020/0325],  lateral-5: 0.9003]
+2026-05-28 19:36:49.338798 Epoch [002/010], Step [0040/0325],  lateral-5: 0.9057]
+2026-05-28 19:36:53.590868 Epoch [002/010], Step [0060/0325],  lateral-5: 0.8902]
+2026-05-28 19:36:57.724016 Epoch [002/010], Step [0080/0325],  lateral-5: 0.8676]
+2026-05-28 19:37:01.891889 Epoch [002/010], Step [0100/0325],  lateral-5: 0.8769]
+2026-05-28 19:37:05.932644 Epoch [002/010], Step [0120/0325],  lateral-5: 0.8631]
+2026-05-28 19:37:10.017713 Epoch [002/010], Step [0140/0325],  lateral-5: 0.8407]
+2026-05-28 19:37:14.215322 Epoch [002/010], Step [0160/0325],  lateral-5: 0.8446]
+2026-05-28 19:37:18.491010 Epoch [002/010], Step [0180/0325],  lateral-5: 0.8381]
+2026-05-28 19:37:22.944989 Epoch [002/010], Step [0200/0325],  lateral-5: 0.8384]
+2026-05-28 19:37:26.983241 Epoch [002/010], Step [0220/0325],  lateral-5: 0.8361]
+2026-05-28 19:37:31.192497 Epoch [002/010], Step [0240/0325],  lateral-5: 0.8064]
+2026-05-28 19:37:35.498141 Epoch [002/010], Step [0260/0325],  lateral-5: 0.8124]
+2026-05-28 19:37:39.734942 Epoch [002/010], Step [0280/0325],  lateral-5: 0.8212]
+2026-05-28 19:37:43.745919 Epoch [002/010], Step [0300/0325],  lateral-5: 0.8316]
+2026-05-28 19:37:47.891952 Epoch [002/010], Step [0320/0325],  lateral-5: 0.8470]
+2026-05-28 19:37:49.178273 Epoch [002/010], Step [0325/0325],  lateral-5: 0.8476]
+ISAC2018 :  0.8530804000000011
+##############################################################################best 0.8580860000000002
+2026-05-28 19:40:25.991824 Epoch [003/010], Step [0020/0325],  lateral-5: 0.7989]
+2026-05-28 19:40:30.224263 Epoch [003/010], Step [0040/0325],  lateral-5: 0.8142]
+2026-05-28 19:40:34.516136 Epoch [003/010], Step [0060/0325],  lateral-5: 0.8084]
+2026-05-28 19:40:38.975661 Epoch [003/010], Step [0080/0325],  lateral-5: 0.7806]
+2026-05-28 19:40:43.109166 Epoch [003/010], Step [0100/0325],  lateral-5: 0.7989]
+2026-05-28 19:40:47.372041 Epoch [003/010], Step [0120/0325],  lateral-5: 0.8129]
+2026-05-28 19:40:51.760986 Epoch [003/010], Step [0140/0325],  lateral-5: 0.7848]
+2026-05-28 19:40:56.687361 Epoch [003/010], Step [0160/0325],  lateral-5: 0.7660]
+2026-05-28 19:41:00.692290 Epoch [003/010], Step [0180/0325],  lateral-5: 0.7836]
+2026-05-28 19:41:04.945668 Epoch [003/010], Step [0200/0325],  lateral-5: 0.7894]
+2026-05-28 19:41:09.292821 Epoch [003/010], Step [0220/0325],  lateral-5: 0.7687]
+2026-05-28 19:41:13.821330 Epoch [003/010], Step [0240/0325],  lateral-5: 0.7705]
+2026-05-28 19:41:18.413268 Epoch [003/010], Step [0260/0325],  lateral-5: 0.7661]
+2026-05-28 19:41:22.607703 Epoch [003/010], Step [0280/0325],  lateral-5: 0.7593]
+2026-05-28 19:41:26.832433 Epoch [003/010], Step [0300/0325],  lateral-5: 0.7792]
+2026-05-28 19:41:31.506558 Epoch [003/010], Step [0320/0325],  lateral-5: 0.7748]
+2026-05-28 19:41:32.491288 Epoch [003/010], Step [0325/0325],  lateral-5: 0.7847]
+ISAC2018 :  0.8646937000000002
+##############################################################################best 0.866382
+2026-05-28 19:44:08.812313 Epoch [004/010], Step [0020/0325],  lateral-5: 0.7199]
+2026-05-28 19:44:13.507769 Epoch [004/010], Step [0040/0325],  lateral-5: 0.7316]
+2026-05-28 19:44:17.712673 Epoch [004/010], Step [0060/0325],  lateral-5: 0.7373]
+2026-05-28 19:44:22.112382 Epoch [004/010], Step [0080/0325],  lateral-5: 0.7337]
+2026-05-28 19:44:26.055333 Epoch [004/010], Step [0100/0325],  lateral-5: 0.7358]
+2026-05-28 19:44:30.344838 Epoch [004/010], Step [0120/0325],  lateral-5: 0.7295]
+2026-05-28 19:44:34.753827 Epoch [004/010], Step [0140/0325],  lateral-5: 0.7414]
+2026-05-28 19:44:38.930174 Epoch [004/010], Step [0160/0325],  lateral-5: 0.7353]
+2026-05-28 19:44:42.987773 Epoch [004/010], Step [0180/0325],  lateral-5: 0.7492]
+2026-05-28 19:44:47.067385 Epoch [004/010], Step [0200/0325],  lateral-5: 0.7748]
+2026-05-28 19:44:51.230162 Epoch [004/010], Step [0220/0325],  lateral-5: 0.7503]
+2026-05-28 19:44:55.550698 Epoch [004/010], Step [0240/0325],  lateral-5: 0.7429]
+2026-05-28 19:44:59.884939 Epoch [004/010], Step [0260/0325],  lateral-5: 0.7290]
+2026-05-28 19:45:03.998872 Epoch [004/010], Step [0280/0325],  lateral-5: 0.7239]
+2026-05-28 19:45:08.032448 Epoch [004/010], Step [0300/0325],  lateral-5: 0.7288]
+2026-05-28 19:45:12.142332 Epoch [004/010], Step [0320/0325],  lateral-5: 0.7197]
+2026-05-28 19:45:13.242989 Epoch [004/010], Step [0325/0325],  lateral-5: 0.7125]
+ISAC2018 :  0.8585751999999996
+2026-05-28 19:47:50.149737 Epoch [005/010], Step [0020/0325],  lateral-5: 0.6854]
+2026-05-28 19:47:55.159498 Epoch [005/010], Step [0040/0325],  lateral-5: 0.6909]
+2026-05-28 19:47:59.400545 Epoch [005/010], Step [0060/0325],  lateral-5: 0.7064]
+2026-05-28 19:48:03.630399 Epoch [005/010], Step [0080/0325],  lateral-5: 0.7236]
+2026-05-28 19:48:07.858178 Epoch [005/010], Step [0100/0325],  lateral-5: 0.7172]
+2026-05-28 19:48:12.048943 Epoch [005/010], Step [0120/0325],  lateral-5: 0.6954]
+2026-05-28 19:48:16.048954 Epoch [005/010], Step [0140/0325],  lateral-5: 0.6844]
+2026-05-28 19:48:20.196199 Epoch [005/010], Step [0160/0325],  lateral-5: 0.6973]
+2026-05-28 19:48:24.414372 Epoch [005/010], Step [0180/0325],  lateral-5: 0.7201]
+2026-05-28 19:48:28.986436 Epoch [005/010], Step [0200/0325],  lateral-5: 0.7116]
+2026-05-28 19:48:33.318429 Epoch [005/010], Step [0220/0325],  lateral-5: 0.7004]
+2026-05-28 19:48:37.472982 Epoch [005/010], Step [0240/0325],  lateral-5: 0.6997]
+2026-05-28 19:48:41.578519 Epoch [005/010], Step [0260/0325],  lateral-5: 0.6801]
+2026-05-28 19:48:45.692104 Epoch [005/010], Step [0280/0325],  lateral-5: 0.6608]
+2026-05-28 19:48:49.791090 Epoch [005/010], Step [0300/0325],  lateral-5: 0.6754]
+2026-05-28 19:48:54.233670 Epoch [005/010], Step [0320/0325],  lateral-5: 0.6776]
+2026-05-28 19:48:55.421973 Epoch [005/010], Step [0325/0325],  lateral-5: 0.6779]
+ISAC2018 :  0.8569942999999999
+##############################################################################best 0.8701010000000001
+2026-05-28 19:51:31.801040 Epoch [006/010], Step [0020/0325],  lateral-5: 0.6908]
+2026-05-28 19:51:36.009803 Epoch [006/010], Step [0040/0325],  lateral-5: 0.6819]
+2026-05-28 19:51:40.101468 Epoch [006/010], Step [0060/0325],  lateral-5: 0.6756]
+2026-05-28 19:51:44.259005 Epoch [006/010], Step [0080/0325],  lateral-5: 0.6886]
+2026-05-28 19:51:48.422614 Epoch [006/010], Step [0100/0325],  lateral-5: 0.6791]
+2026-05-28 19:51:52.763146 Epoch [006/010], Step [0120/0325],  lateral-5: 0.6666]
+2026-05-28 19:51:56.867067 Epoch [006/010], Step [0140/0325],  lateral-5: 0.6622]
+2026-05-28 19:52:01.319079 Epoch [006/010], Step [0160/0325],  lateral-5: 0.6482]
+2026-05-28 19:52:05.411466 Epoch [006/010], Step [0180/0325],  lateral-5: 0.6530]
+2026-05-28 19:52:09.972166 Epoch [006/010], Step [0200/0325],  lateral-5: 0.6447]
+2026-05-28 19:52:14.000682 Epoch [006/010], Step [0220/0325],  lateral-5: 0.6451]
+2026-05-28 19:52:18.332604 Epoch [006/010], Step [0240/0325],  lateral-5: 0.6526]
+2026-05-28 19:52:22.522058 Epoch [006/010], Step [0260/0325],  lateral-5: 0.6445]
+2026-05-28 19:52:26.798842 Epoch [006/010], Step [0280/0325],  lateral-5: 0.6473]
+2026-05-28 19:52:30.868800 Epoch [006/010], Step [0300/0325],  lateral-5: 0.6639]
+2026-05-28 19:52:35.430069 Epoch [006/010], Step [0320/0325],  lateral-5: 0.6647]
+2026-05-28 19:52:36.738758 Epoch [006/010], Step [0325/0325],  lateral-5: 0.6585]
+ISAC2018 :  0.8710123999999991
+##############################################################################best 0.8774150000000001
+2026-05-28 19:55:12.250338 Epoch [007/010], Step [0020/0325],  lateral-5: 0.6360]
+2026-05-28 19:55:16.308484 Epoch [007/010], Step [0040/0325],  lateral-5: 0.6341]
+2026-05-28 19:55:20.370533 Epoch [007/010], Step [0060/0325],  lateral-5: 0.6286]
+2026-05-28 19:55:24.485451 Epoch [007/010], Step [0080/0325],  lateral-5: 0.6232]
+2026-05-28 19:55:28.606588 Epoch [007/010], Step [0100/0325],  lateral-5: 0.6318]
+2026-05-28 19:55:32.906182 Epoch [007/010], Step [0120/0325],  lateral-5: 0.6461]
+2026-05-28 19:55:37.081048 Epoch [007/010], Step [0140/0325],  lateral-5: 0.6304]
+2026-05-28 19:55:41.824814 Epoch [007/010], Step [0160/0325],  lateral-5: 0.6121]
+2026-05-28 19:55:46.023700 Epoch [007/010], Step [0180/0325],  lateral-5: 0.6233]
+2026-05-28 19:55:50.332365 Epoch [007/010], Step [0200/0325],  lateral-5: 0.6426]
+2026-05-28 19:55:54.532043 Epoch [007/010], Step [0220/0325],  lateral-5: 0.6412]
+2026-05-28 19:55:58.677789 Epoch [007/010], Step [0240/0325],  lateral-5: 0.6355]
+2026-05-28 19:56:02.920325 Epoch [007/010], Step [0260/0325],  lateral-5: 0.6378]
+2026-05-28 19:56:07.492468 Epoch [007/010], Step [0280/0325],  lateral-5: 0.6239]
+2026-05-28 19:56:11.662350 Epoch [007/010], Step [0300/0325],  lateral-5: 0.6147]
+2026-05-28 19:56:15.670138 Epoch [007/010], Step [0320/0325],  lateral-5: 0.6319]
+2026-05-28 19:56:16.662967 Epoch [007/010], Step [0325/0325],  lateral-5: 0.6368]
+ISAC2018 :  0.8565076000000009
+2026-05-28 19:58:52.998781 Epoch [008/010], Step [0020/0325],  lateral-5: 0.6079]
+2026-05-28 19:58:57.158338 Epoch [008/010], Step [0040/0325],  lateral-5: 0.5989]
+2026-05-28 19:59:01.831110 Epoch [008/010], Step [0060/0325],  lateral-5: 0.5948]
+2026-05-28 19:59:06.065844 Epoch [008/010], Step [0080/0325],  lateral-5: 0.5965]
+2026-05-28 19:59:10.106066 Epoch [008/010], Step [0100/0325],  lateral-5: 0.5975]
+2026-05-28 19:59:14.260639 Epoch [008/010], Step [0120/0325],  lateral-5: 0.6044]
+2026-05-28 19:59:18.597904 Epoch [008/010], Step [0140/0325],  lateral-5: 0.6024]
+2026-05-28 19:59:22.815649 Epoch [008/010], Step [0160/0325],  lateral-5: 0.5997]
+2026-05-28 19:59:26.800795 Epoch [008/010], Step [0180/0325],  lateral-5: 0.6074]
+2026-05-28 19:59:30.972917 Epoch [008/010], Step [0200/0325],  lateral-5: 0.6278]
+2026-05-28 19:59:35.378389 Epoch [008/010], Step [0220/0325],  lateral-5: 0.6153]
+2026-05-28 19:59:39.734606 Epoch [008/010], Step [0240/0325],  lateral-5: 0.5955]
+2026-05-28 19:59:43.867407 Epoch [008/010], Step [0260/0325],  lateral-5: 0.5959]
+2026-05-28 19:59:47.898006 Epoch [008/010], Step [0280/0325],  lateral-5: 0.5897]
+2026-05-28 19:59:52.298759 Epoch [008/010], Step [0300/0325],  lateral-5: 0.5732]
+2026-05-28 19:59:56.837578 Epoch [008/010], Step [0320/0325],  lateral-5: 0.5813]
+2026-05-28 19:59:57.951600 Epoch [008/010], Step [0325/0325],  lateral-5: 0.5964]
+ISAC2018 :  0.8298337999999992
+2026-05-28 20:02:35.945732 Epoch [009/010], Step [0020/0325],  lateral-5: 0.6161]
+2026-05-28 20:02:40.806280 Epoch [009/010], Step [0040/0325],  lateral-5: 0.5920]
+2026-05-28 20:02:46.291514 Epoch [009/010], Step [0060/0325],  lateral-5: 0.5787]
+2026-05-28 20:02:51.222018 Epoch [009/010], Step [0080/0325],  lateral-5: 0.5925]
+2026-05-28 20:02:56.332615 Epoch [009/010], Step [0100/0325],  lateral-5: 0.5805]
+2026-05-28 20:03:01.494457 Epoch [009/010], Step [0120/0325],  lateral-5: 0.5741]
+2026-05-28 20:03:06.819732 Epoch [009/010], Step [0140/0325],  lateral-5: 0.5928]
+2026-05-28 20:03:12.368278 Epoch [009/010], Step [0160/0325],  lateral-5: 0.5906]
+2026-05-28 20:03:17.174238 Epoch [009/010], Step [0180/0325],  lateral-5: 0.5711]
+2026-05-28 20:03:22.425136 Epoch [009/010], Step [0200/0325],  lateral-5: 0.5774]
+2026-05-28 20:03:27.928647 Epoch [009/010], Step [0220/0325],  lateral-5: 0.5801]
+2026-05-28 20:03:33.433702 Epoch [009/010], Step [0240/0325],  lateral-5: 0.5673]
+2026-05-28 20:03:38.762348 Epoch [009/010], Step [0260/0325],  lateral-5: 0.5574]
+2026-05-28 20:03:43.887068 Epoch [009/010], Step [0280/0325],  lateral-5: 0.5545]
+2026-05-28 20:03:48.906635 Epoch [009/010], Step [0300/0325],  lateral-5: 0.5775]
+2026-05-28 20:03:53.774219 Epoch [009/010], Step [0320/0325],  lateral-5: 0.5706]
+2026-05-28 20:03:54.991934 Epoch [009/010], Step [0325/0325],  lateral-5: 0.5660]
+ISAC2018 :  0.8721668999999981
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+>>   File "C:\Users\Orhan\Documents\GitHub\Tree-NET\lib\models.py", line 525, in call_model
+>>     model=UNET(input_channels,h_channels, out_channels,args).cuda()
+>>           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>>   File "C:\Users\Orhan\Documents\GitHub\Tree-NET\lib\models.py", line 279, in __init__
+>>     self.in_model=call_model(args, encoder_path).cuda()
+>>                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+>>   File "C:\Users\Orhan\Documents\GitHub\Tree-NET\lib\models.py", line 525, in call_model
+>>     model=UNET(input_channels,h_channels, out_channels,args).cuda()^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '54437' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '62192' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '54554' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '60364' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '52249' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '55066' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '56524' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Selected component is: ORIGINAL
+Selected component is: Encoder_x4
+Selected component is: Decoder_x4
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '58703' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Side components
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '52843' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Side components
+Selected component is: Encoder_x4
+True
+no augmentation
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '56313' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Side components
+Selected component is: Encoder_x4
+True
+no augmentation
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '55777' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Side components
+Selected component is: Encoder_x4
+True
+no augmentation
+C:\Users\Orhan\Documents\GitHub\Tree-NET\utils\encoder.py:603: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  img = F.upsample(img, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\Documents\GitHub\Tree-NET\utils\encoder.py:604: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  lab = F.upsample(lab, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\anaconda3\envs\myenv\Lib\site-packages\torch\nn\modules\loss.py:626: UserWarning: Using a target size (torch.Size([32, 1, 384, 384])) that is different to the input size (torch.Size([32, 3, 384, 384])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+C:\Users\Orhan\anaconda3\envs\myenv\Lib\site-packages\torch\nn\modules\loss.py:626: UserWarning: Using a target size (torch.Size([2, 1, 384, 384])) that is different to the input size (torch.Size([2, 3, 384, 384])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '51812' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Side components
+Selected component is: Encoder_x4
+True
+no augmentation
+False
+no augmentation
+C:\Users\Orhan\Documents\GitHub\Tree-NET\utils\encoder.py:603: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  img = F.upsample(img, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\Documents\GitHub\Tree-NET\utils\encoder.py:604: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  lab = F.upsample(lab, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\anaconda3\envs\myenv\Lib\site-packages\torch\nn\modules\loss.py:626: UserWarning: Using a target size (torch.Size([32, 1, 384, 384])) that is different to the input size (torch.Size([32, 3, 384, 384])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+C:\Users\Orhan\anaconda3\envs\myenv\Lib\site-packages\torch\nn\modules\loss.py:626: UserWarning: Using a target size (torch.Size([2, 1, 384, 384])) that is different to the input size (torch.Size([2, 3, 384, 384])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+
+C:\Users\Orhan\anaconda3\envs\myenv\Lib\site-packages\torch\nn\modules\loss.py:626: UserWarning: Using a target size (torch.Size([4, 1, 384, 384])) that is different to the input size (torch.Size([4, 3, 384, 384])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.mse_loss(input, target, reduction=self.reduction)
+Model saved at epoch:  1
+validation loss= 0.18465685099363327
+duration 0:02:17.733258
+
+epoch 0 training loss= tensor(0.2593, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  2
+validation loss= 0.15674767270684242
+duration 0:02:16.656686
+
+epoch 1 training loss= tensor(0.1599, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  3
+validation loss= 0.1403247658163309
+duration 0:02:16.872393
+
+epoch 2 training loss= tensor(0.1296, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  4
+validation loss= 0.12438840419054031
+duration 0:02:17.067994
+
+epoch 3 training loss= tensor(0.1161, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  5
+validation loss= 0.12126748077571392
+duration 0:02:15.754328
+
+epoch 4 training loss= tensor(0.1088, device='cuda:0', grad_fn=<DivBackward0>)
+Side components
+Selected component is: Decoder_x4
+True
+no augmentation
+False
+no augmentation
+Backend tkagg is interactive backend. Turning interactive mode on.
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> ^C
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET> 
+PS C:\Users\Orhan\Documents\GitHub\Tree-NET>  c:; cd 'c:\Users\Orhan\Documents\GitHub\Tree-NET'; & 'C:\Users\Orhan\anaconda3\envs\myenv\python.exe' 'c:\Users\Orhan\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '64685' '--' 'C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py' 
+Side components
+Side components
+Selected component is: Decoder_x4
+True
+no augmentation
+False
+no augmentation
+C:\Users\Orhan\Documents\GitHub\Tree-NET\utils\encoder.py:603: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  img = F.upsample(img, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\Documents\GitHub\Tree-NET\utils\encoder.py:604: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  lab = F.upsample(lab, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+
+Model saved at epoch:  1
+validation loss= 0.2471872791647911
+duration 0:02:04.127691
+
+epoch 0 training loss= tensor(0.2517, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  2
+validation loss= 0.2342868372797966
+duration 0:02:07.686133
+
+epoch 1 training loss= tensor(0.2403, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  3
+validation loss= 0.18603014945983887
+duration 0:02:07.580348
+
+epoch 2 training loss= tensor(0.1933, device='cuda:0', grad_fn=<DivBackward0>)
+
+validation loss= 0.18711169809103012
+duration 0:02:10.310679
+
+epoch 3 training loss= tensor(0.1620, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  5
+validation loss= 0.17066045850515366
+duration 0:02:10.858687
+
+epoch 4 training loss= tensor(0.1565, device='cuda:0', grad_fn=<DivBackward0>)
+Side components
+Selected component is: Decoder_x16
+True
+no augmentation
+False
+no augmentation
+
+Model saved at epoch:  1
+validation loss= 0.2297530472278595
+duration 0:09:49.838706
+
+epoch 0 training loss= tensor(0.2328, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  2
+validation loss= 0.21017952263355255
+duration 0:10:23.135391
+
+epoch 1 training loss= tensor(0.2108, device='cuda:0', grad_fn=<DivBackward0>)
+
+Model saved at epoch:  3
+validation loss= 0.20363858342170715
+duration 0:08:19.301724
+
+epoch 2 training loss= tensor(0.1828, device='cuda:0', grad_fn=<DivBackward0>)
+
+validation loss= 0.20557795464992523
+duration 0:10:36.846457
+
+epoch 3 training loss= tensor(0.1749, device='cuda:0', grad_fn=<DivBackward0>)
+
+validation loss= 0.20480869710445404
+duration 0:09:12.806960
+
+epoch 4 training loss= tensor(0.1745, device='cuda:0', grad_fn=<DivBackward0>)
+Selected component is: ORIGINAL
+Selected component is: Encoder_x4
+Selected component is: Decoder_x4
+AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    decoupled_weight_decay: True
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.0001
+    maximize: False
+    weight_decay: 0.0001
+)
+True
+no augmentation
+#################### Start Training ####################
+C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py:122: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  images = F.upsample(images, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+C:\Users\Orhan\Documents\GitHub\Tree-NET\Train.py:123: UserWarning: `nn.functional.upsample` is deprecated. Use `nn.functional.interpolate` instead.
+  gts = F.upsample(gts, size=(trainsize, trainsize), mode='bilinear', align_corners=True)
+Backend tkagg is interactive backend. Turning interactive mode on.

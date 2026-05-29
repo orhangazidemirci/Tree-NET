@@ -9,176 +9,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from lib.pvtv2 import pvt_v2_b2
+from lib.models import call_model
 import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 
-
-
-class Encoder_x4(nn.Module):
-   def __init__(self):
-
-       super(Encoder_x4, self).__init__()
-       # self.encoder=nn.Sequential(nn.Conv2d(3,8, 3),nn.ELU(),nn.MaxPool2d(2,2),
-       #                 nn.ELU(),nn.Conv2d(8, 24, 3),nn.ELU(),nn.Conv2d(24, 32, 5,stride=3)
-       #                 ##nn.Conv2d(8, 8, 3)
-       #                 ,nn.ELU(),nn.Conv2d(32, 10, 3,stride=2),nn.ELU(),nn.ConvTranspose2d(10, 10, 3),nn.ELU())
-       self.encoder = nn.Sequential(
-           nn.Conv2d(3, 8, 3, padding=2),
-           nn.BatchNorm2d(8),
-           nn.ELU(),
-           nn.Conv2d(8, 24, 3, padding=1, stride=2),
-           nn.BatchNorm2d(24),
-           nn.ELU(),
-           nn.Conv2d(24, 32, 5, padding=1),
-           nn.BatchNorm2d(32),
-           nn.ReLU(),
-           nn.Conv2d(32, 18, 3, padding=1, stride=2),
-           nn.BatchNorm2d(18),
-           nn.Tanh(),
-           nn.Conv2d(18, 3, 3, padding=1),  # Adjusted padding
-           nn.BatchNorm2d(3),
-           nn.ELU()
-       )
-
-   #        self.decoder=nn.Sequential(nn.ConvTranspose2d(10, 32, 5,stride=3),nn.ELU(),nn.Conv2d(32, 24, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
-   # nn.Conv2d(24, 16, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
-   # nn.Conv2d(16, 8, 3),nn.ELU(), nn.Conv2d(8, 3, 3),nn.ELU())
-       self.decoder = nn.Sequential(
-           nn.ConvTranspose2d(3, 10, 3, padding=1),  # Output: (N, 10, 64, 64)
-           nn.BatchNorm2d(10),
-           nn.ReLU(),
-           nn.ConvTranspose2d(10, 24, 3, padding=1, stride=2),  # Output: (N, 24, 128, 128)
-           nn.BatchNorm2d(24),
-           nn.ELU(),
-           nn.ConvTranspose2d(24, 32, 3, padding=1),  # Output: (N, 32, 128, 128)
-           nn.BatchNorm2d(32),
-           nn.Tanh(),
-           nn.ConvTranspose2d(32, 32, 3, padding=1),  # Output: (N, 32, 256, 256)
-           nn.BatchNorm2d(32),
-           nn.ReLU(),
-           nn.Upsample(scale_factor=2, mode='nearest'),
-           nn.ConvTranspose2d(32, 24, 3, padding=1),  # Output: (N, 24, 256, 256)
-           nn.BatchNorm2d(24),
-           nn.ELU(),
-           nn.ConvTranspose2d(24, 8, 3, padding=1),  # Output: (N, 18, 256, 256)
-           nn.BatchNorm2d(8),
-           nn.ReLU(),
-           nn.ConvTranspose2d(8, 3, 3),  # Output: (N, 3, 256, 256)
-           nn.ELU()
-           )
-
-   def forward(self, inp):
-       x=self.encoder(inp)
-       ## x=self.bridge(x)+x
-       
-       ## x=x-self.res(inp)
-      # # x=self.encoder2(x)
-       
-       # x=self.decoder(x)
-       
-     #  # out=self.decoder(x)+F.interpolate(self.pooling(inp), scale_factor=8, mode='nearest')
-       return x
-    
-    
-
-    
-class Decoder_x4(nn.Module):
-    def __init__(self):
-
-        super(Decoder_x4, self).__init__()
-        self.encoder_out= nn.Sequential(
-            nn.Conv2d(1, 8, 3, padding=2),
-            nn.ReLU(),
-            nn.Conv2d(8, 24, 3, padding=1, stride=2),
-            nn.ReLU(),
-            nn.Conv2d(24, 32, 5, padding=1),
-            nn.ReLU(),
-            nn.Conv2d(32, 18, 3, padding=1, stride=2),
-            nn.ReLU(),
-            nn.Conv2d(18, 3, 3, padding=1), 
-            nn.Sigmoid()
-        )
-
-        self.decoder_out = nn.Sequential(
-            nn.ConvTranspose2d(3, 18, 3, padding=1, stride=2),  # Output: (N, 24, 128, 128)
-            nn.ReLU(),
-            nn.ConvTranspose2d(18, 32, 3, padding=1),  # Output: (N, 32, 128, 128)
-            nn.ReLU(),
-            nn.ConvTranspose2d(32, 32, 3, padding=1),  # Output: (N, 32, 256, 256)
-            nn.ReLU(),
-            nn.Upsample(scale_factor=2, mode='nearest'),
-            nn.ConvTranspose2d(32, 24, 3, padding=1),  # Output: (N, 24, 256, 256)
-            nn.ReLU(),
-            nn.ConvTranspose2d(24, 8, 3, padding=1),  # Output: (N, 18, 256, 256)
-            nn.ReLU(),
-            nn.ConvTranspose2d(8, 1, 3),  # Output: (N, 3, 256, 256)
-            nn.Sigmoid()
-            )
-    def forward(self, x):
-        # x=self.encoder_out(x)
-        x=self.decoder_out(x)
-        return x
-    
-
-class Decoder_x16(nn.Module):
-    def __init__(self):
-
-        super(Decoder_x16, self).__init__()
-        self.encoder_out=nn.Sequential(
-              nn.Conv2d(1,8, 3),
-              nn.ELU(),
-              nn.MaxPool2d(2,2, padding=0, return_indices=False, ceil_mode=False),
-              nn.Conv2d(8, 24, 3),
-              nn.ReLU(),
-              nn.MaxPool2d(2,2, padding=0, return_indices=False, ceil_mode=False),
-              nn.Conv2d(24, 32, 5,stride=2),
-              nn.ReLU(),
-
-                  ##nn.Conv2d(8, 8, 3)
-              nn.ELU(),
-              nn.Conv2d(32, 24, 3,stride=2),
-              nn.ReLU(),
-              nn.ConvTranspose2d(24, 16, 3),
-              nn.Sigmoid())
-   #        self.decoder=nn.Sequential(nn.ConvTranspose2d(10, 32, 5,stride=3),nn.ELU(),nn.Conv2d(32, 24, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
-   # nn.Conv2d(24, 16, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
-   # nn.Conv2d(16, 8, 3),nn.ELU(), nn.Conv2d(8, 3, 3),nn.ELU())
-        self.decoder_out=nn.Sequential(
-              nn.ConvTranspose2d(16, 24, 3,padding=1),
-              nn.ELU(),
-              nn.Upsample(scale_factor=2, mode='nearest'),
-              nn.ConvTranspose2d(24, 32, 3,padding=1),
-              nn.ELU(),
-              nn.Upsample(scale_factor=2, mode='nearest'),
-              nn.ConvTranspose2d(32, 24, 3,padding=1),
-              nn.ELU(),
-              nn.Upsample(scale_factor=2, mode='nearest'),
-              nn.ConvTranspose2d(24, 24, 3,padding=2),
-              nn.ReLU(),
-              nn.Upsample(scale_factor=2, mode='nearest'),
-              nn.ConvTranspose2d(24, 16, 5,padding=1),
-              nn.ELU(),
-              nn.ConvTranspose2d(16, 8, 3,padding=1),
-              nn.ReLU(),
-              nn.ConvTranspose2d(8, 1, 3),
-              nn.Sigmoid())
- #        self.encoder_out=nn.Sequential(nn.Conv2d(1,8, 3),nn.ELU(),nn.MaxPool2d(2,2, padding=0, return_indices=False, ceil_mode=False),
- #                nn.ELU(),nn.Conv2d(8, 24, 3),nn.ELU(),nn.Conv2d(24, 32, 5,stride=2)
- #                ##nn.Conv2d(8, 8, 3)
- #                ,nn.ELU(),nn.Conv2d(32, 5, 3,stride=2),nn.ELU(),nn.ConvTranspose2d(5, 3, 3),nn.Sigmoid())
- # #        self.decoder=nn.Sequential(nn.ConvTranspose2d(10, 32, 5,stride=3),nn.ELU(),nn.Conv2d(32, 24, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
- # # nn.Conv2d(24, 16, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
- # # nn.Conv2d(16, 8, 3),nn.ELU(), nn.Conv2d(8, 3, 3),nn.ELU())
- #        self.decoder_out=nn.Sequential(nn.Conv2d(3, 24, 3),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),nn.ConvTranspose2d(24, 32, 3,padding=1),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
- # nn.ConvTranspose2d(32, 24, 3),nn.ELU(),nn.ConvTranspose2d(24, 16, 5),nn.ELU(),nn.Upsample(scale_factor=2, mode='nearest'),
- # nn.ConvTranspose2d(16, 8, 3),nn.ELU(),nn.ConvTranspose2d(8, 1, 3),nn.ELU())        
-    def forward(self, x):
-        # x=self.encoder_out(x)
-        x=self.decoder_out(x)
-        return x
 
     
 class BasicConv2d(nn.Module):
@@ -329,18 +166,21 @@ class SpatialAttention(nn.Module):
 
 
 class PolypPVT(nn.Module):
-    def __init__(self, channel=32):
+    def __init__(self, args, channel=32):
         super(PolypPVT, self).__init__()
 
-        encoder_path='./model_pth/encoder_x4_Polyp.pt'
-        # encoder_path='./model_pth/encoder_x4_ISAC2018.pt'
 
-        self.in_model=Encoder_x4().cuda()
-        save_model = torch.load(encoder_path)
-        model_dict = self.in_model.state_dict()
-        state_dict = {k: v for k, v in save_model.items() if k in model_dict.keys()}
-        model_dict.update(state_dict)
-        self.in_model.load_state_dict(model_dict)
+        self.args=args
+        self.treenet=args.treenet
+
+        # encoder_path='./model_pth/encoder_x4_Polyp.pt'
+        # encoder_path='./model_pth/encoder_x4_ISAC2018.pt'
+        encoder_path= args.encoder_path
+        component=args.component_selected
+        args.component_selected=args.encoder_component
+        self.in_model=call_model(args, encoder_path).cuda() # We can create 2 in_model for both outputs and train on them
+        args.component_selected=component
+
         for param in self.in_model.parameters():
             param.requires_grad = False  
 
@@ -365,8 +205,14 @@ class PolypPVT(nn.Module):
         self.sa = SpatialAttention()
         self.SAM = SAM()
         
-        hidden_channel=16
+
+        if self.treenet:
+            hidden_channel=args.bottleneck_size[args.decoder_component]
+        else:
+            hidden_channel=1
+
         self.down05 = nn.Upsample(scale_factor=0.5, mode='bilinear', align_corners=True)
+
         self.out_SAM = nn.Conv2d(channel,hidden_channel, 1)
         self.out_CFM = nn.Conv2d(channel, hidden_channel, 1)
         
@@ -379,22 +225,29 @@ class PolypPVT(nn.Module):
         # self.out_SAM4 = nn.Conv2d(3,1, 3,padding=1)
         # self.out_CFM4 = nn.Conv2d(3,1, 3,padding=1)
 
-        decoder_path='./model_pth/decoder_x16_Polyp.pt'
+        # decoder_path='./model_pth/decoder_x16_Polyp.pt'
         # decoder_path='./model_pth/decoder_x16_ISAC2018.pt'
-
-        self.out_model=Decoder_x16().cuda() # We can create 2 out_model for both outputs and train on them
+        decoder_path= args.decoder_path
         
-        #Also create an encoder out that gets an additional loss
-        save_model = torch.load(decoder_path)
-        model_dict = self.out_model.state_dict()
-        state_dict = {k: v for k, v in save_model.items() if k in model_dict.keys()}
-        model_dict.update(state_dict)
-        self.out_model.load_state_dict(model_dict)
+        args.component_selected=args.decoder_component
+        self.out_model=call_model(args, decoder_path).cuda() # We can create 2 out_model for both outputs and train on them
+        args.component_selected=component
+        
+        # self.out_model=Decoder_x16().cuda() # We can create 2 out_model for both outputs and train on them
+        
+        # #Also create an encoder out that gets an additional loss
+        # save_model = torch.load(decoder_path)
+        # model_dict = self.out_model.state_dict()
+        # state_dict = {k: v for k, v in save_model.items() if k in model_dict.keys()}
+        # model_dict.update(state_dict)
+        # self.out_model.load_state_dict(model_dict)
         
         for param in self.out_model.parameters():
             param.requires_grad = False   
 
     def forward(self, x):
+        if self.treenet:
+             x=self.in_model(x)
         # x=self.in_model(x)
         # # x = F.upsample(x, size=(round(x.size(2)/7)*7, round(x.size(2)/7)*7), mode='bilinear', align_corners=True)
 
@@ -436,30 +289,28 @@ class PolypPVT(nn.Module):
         prediction1 = self.out_CFM(cfm_feature)
         prediction2 = self.out_SAM(sam_feature)
 
-        # prediction1_8 = F.interpolate(prediction1, scale_factor=8, mode='bilinear') 
-        # prediction2_8 = F.interpolate(prediction2, scale_factor=8, mode='bilinear')  
+        if self.treenet:
+            prediction1_8 = self.out_model(prediction1)
+            prediction1_8 = F.interpolate(prediction1_8, scale_factor=2, mode='bilinear') 
+            prediction1_8 = self.out_CFM2(self.relu(prediction1_8))
+            
+            # prediction1_8 = F.interpolate(prediction1_8, scale_factor=2, mode='bilinear') 
+            prediction1_8 = self.out_CFM3(self.relu(prediction1_8))
 
-        prediction1_8 = self.out_model(prediction1)
-        prediction1_8 = F.interpolate(prediction1_8, scale_factor=2, mode='bilinear') 
-        prediction1_8 = self.out_CFM2(self.relu(prediction1_8))
-        
-        # prediction1_8 = F.interpolate(prediction1_8, scale_factor=2, mode='bilinear') 
-        prediction1_8 = self.out_CFM3(self.relu(prediction1_8))
+            # prediction1_8 = F.interpolate(prediction1_8, scale_factor=2, mode='bilinear') 
+            # prediction1_8 = self.out_CFM4(self.relu(prediction1_8))
+            
 
-        # prediction1_8 = F.interpolate(prediction1_8, scale_factor=2, mode='bilinear') 
-        # prediction1_8 = self.out_CFM4(self.relu(prediction1_8))
-        
-
-        
-        prediction2_8 = self.out_model(prediction2)
-        prediction2_8 = F.interpolate(prediction2_8, scale_factor=2, mode='bilinear')  
-        prediction2_8 = self.out_SAM2(self.relu(prediction2_8))
-        
-        # prediction2_8 = F.interpolate(prediction2_8, scale_factor=2, mode='bilinear')  
-        prediction2_8 = self.out_SAM3(self.relu(prediction2_8))
-
-        # prediction2_8 = F.interpolate(prediction2_8, scale_factor=2, mode='bilinear')  
-        # prediction2_8 = self.out_SAM4(self.relu(prediction2_8))
+            
+            prediction2_8 = self.out_model(prediction2)
+            prediction2_8 = F.interpolate(prediction2_8, scale_factor=2, mode='bilinear')  
+            prediction2_8 = self.out_SAM2(self.relu(prediction2_8))
+            
+            # prediction2_8 = F.interpolate(prediction2_8, scale_factor=2, mode='bilinear')  
+            prediction2_8 = self.out_SAM3(self.relu(prediction2_8))
+        else:
+            prediction1_8 = F.interpolate(prediction1, scale_factor=8, mode='bilinear') 
+            prediction2_8 = F.interpolate(prediction2, scale_factor=8, mode='bilinear')
 
         return prediction1_8, prediction2_8
 

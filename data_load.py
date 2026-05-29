@@ -261,7 +261,7 @@ image_root = '{}/images/'.format(opt.train_path)
 gt_root = '{}/masks/'.format(opt.train_path)
 
 
-train_loader = get_loader(image_root, gt_root, batchsize=opt.batchsize, trainsize=opt.trainsize,
+train_loader = get_loader(image_root, gt_root, batchsize=opt.batchsize, trainsize=opt.trainsize, args=opt
                           augmentation=opt.augmentation)
 out_model.eval()
 in_model.eval()
@@ -367,72 +367,6 @@ def test(model, path, dataset):
 
 
 
-# bridge_d='./bridge_dataset/test'
-# bridge_l='./bridge_dataset/test'
-
-test1path = './dataset/TestDataset/'
-for dataset in ['CVC-300', 'CVC-ClinicDB', 'Kvasir', 'CVC-ColonDB', 'ETIS-LaribPolypDB']:
-    data_path = os.path.join(test1path, dataset)
-    image_root = '{}/images/'.format(data_path)
-    gt_root = '{}/masks/'.format(data_path)
-    bridge_d='./bridge_dataset/test/{}/images'.format(dataset)
-    bridge_l='./bridge_dataset/test/{}/masks'.format(dataset)
-    
-    test_loader = get_loader(image_root, gt_root, batchsize=1, trainsize=opt.trainsize,
-                              augmentation=False)
-    # num1 = len(os.listdir(gt_root))
-    # test_loader = test_dataset(image_root, gt_root, 352)
-    # DSC = 0.0
-    # for i in range(num1):
-    #     image, gt, name = test_loader.load_data()
-    #     # gt = np.asarray(gt, np.float32)
-    #     # gt /= (gt.max() + 1e-8)    
-    #     # torch.tensor(gt)
-    #     image = Variable(images).cuda()
-    #     gt = Variable(gt).cuda()
-    #     out=out_model(gt)
-
-    #     torch.save(out, join(bridge_l, str(i)))
-        
-    #     # label=label.cpu()
-    #       # cv2.imwrite(join(bridge_l,values_2d[n][0]), lab[n].reshape(400,400).detach().numpy())
-    #       # print('Image ',dataname[n])
-        
-        
-    #       # tr=torch.transpose(tr, 1, 3)
-    #       # tr=tr.cuda()
-    #     inp=in_model(image)
-    #     #  inp = torch.cat((inp[0].reshape(in_channels,out.size(1),out.size(2))), inp[1].reshape(in_channels,out.size(1),out.size(2))), dim=0)
-    #        # if  "BRIDGE"==algorithm_selected:
-    #        #   inp = torch.cat((inp[0].view(in_channels,inp[0].size(2),inp[0].size(3)), inp[1].view(in_channels,inp[1].size(2),inp[0].size(3))), dim=0)
-        
-    #     # in_out[n]=inp
-    #     torch.save(inp, join(bridge_d,str(i)))         
-        
-    for i,pack in enumerate(test_loader):
-        
-        images, gts = pack
-        images = Variable(images).cuda()
-        gts = Variable(gts).cuda()
-
-        out=out_model(gts)
-
-        torch.save(out, join(bridge_l, str(i)))
-        
-        # label=label.cpu()
-          # cv2.imwrite(join(bridge_l,values_2d[n][0]), lab[n].reshape(400,400).detach().numpy())
-          # print('Image ',dataname[n])
-        
-        
-          # tr=torch.transpose(tr, 1, 3)
-          # tr=tr.cuda()
-        inp=in_model(images)
-        #  inp = torch.cat((inp[0].reshape(in_channels,out.size(1),out.size(2))), inp[1].reshape(in_channels,out.size(1),out.size(2))), dim=0)
-            # if  "BRIDGE"==algorithm_selected:
-            #   inp = torch.cat((inp[0].view(in_channels,inp[0].size(2),inp[0].size(3)), inp[1].view(in_channels,inp[1].size(2),inp[0].size(3))), dim=0)
-        
-        # in_out[n]=inp
-        torch.save(inp, join(bridge_d,str(i))) 
 
     
 def test_data(bridge_d,bridge_l):

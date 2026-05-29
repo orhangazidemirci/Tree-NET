@@ -3,3 +3,10 @@
 /Figs
 /model_pth
 /result_map
+/log_yedek
+*.log
+*.log
+/USB Sürücüsü/dataset
+/USB Sürücüsü
+*.txt
+*.csv
