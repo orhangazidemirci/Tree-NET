@@ -16,7 +16,7 @@ from utils.dataloader import test_dataset
 # ---------------------------------------------------------------------------
 # 0. CONFIGURATION
 # ---------------------------------------------------------------------------
-BASE_OUTPUT_DIR = r"C:\Users\Orhan\Documents\GitHub\Polyp-PVT\result_map" # REPLACE with the path to NUnet, PolypPVT, Unet
+BASE_OUTPUT_DIR = r"Tree-NET\result_map" # REPLACE with the path to NUnet, PolypPVT, Unet
 # Define how to find ground truth images.
 # Option 1: GT is in a parallel structure (e.g., a 'gt' folder at the same level as 'NUnet')
 # GT_BASE_DIR = r"C:\path\to\your\gt_folder"
@@ -29,11 +29,11 @@ BASE_OUTPUT_DIR = r"C:\Users\Orhan\Documents\GitHub\Polyp-PVT\result_map" # REPL
 def get_gt_path(dataset_name, image_filename):
     # THIS IS A PLACEHOLDER - MODIFY IT TO MATCH YOUR GT STRUCTURE
     if dataset_name == "CVC-ClinicDB":
-        gt_dir = r"C:\Users\Orhan\Documents\GitHub\Polyp-PVT\dataset\TestDataset\{}\masks".format(dataset_name) # REPLACE
+        gt_dir = r"Tree-NET\dataset\TestDataset\{}\masks".format(dataset_name) # REPLACE
         # data_path = './dataset/TestDataset/{}'.format(_data_name)
         # data_path = './dataset/{}/test'.format(dataset_name)
     elif dataset_name == "ISAC_2018": # Note: you wrote ISAC, assuming ISIC
-        gt_dir = r"C:\Users\Orhan\Documents\GitHub\Polyp-PVT\dataset\ISAC2018\test\masks".format(dataset_name) # REPLACE
+        gt_dir = r"Tree-NET\dataset\ISAC2018\test\masks".format(dataset_name) # REPLACE
         # data_path = './dataset/{}/test'.format(dataset_name)
 
     else:

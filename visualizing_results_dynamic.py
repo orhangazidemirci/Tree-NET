@@ -181,7 +181,6 @@ model_selected=[ 'Retrained_Encoder_x4_nestedunet','ORIGINAL_DuckNet','ORIGINAL_
 
 
 
-label_res='C:/Users/Orhan/Desktop/python/thesis/output_file/save_data/{}_Output/gnd_truth_original_unet'.format(dataset_name)
 paths= {}
 label_paths=  {}
 # for _data_name in ['CVC-300', 'CVC-ClinicDB', 'Kvasir', 'CVC-ColonDB', 'ETIS-LaribPolypDB']:
@@ -189,7 +188,6 @@ label_paths=  {}
 #     path = './result_map/PolypPVT/{}/'.format(_data_name)
 #     label_path= './dataset/TestDataset/{}'.format(_data_name)
 
-# paths['BS U-NET'] = 'C:/Users/Orhan/Desktop/python/thesis/output_file/save_data/{}_Output/output_bsunet'.format(dataset_name)
 paths['Tree-Net']='./result_map/PolypPVT'
 # key_mapping = {
 #     'Encoder_x4_unet': 'Tree-NET\n(U-NET BB)',
