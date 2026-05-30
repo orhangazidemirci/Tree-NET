@@ -143,6 +143,7 @@ def run_benchmark(opt, dataset_paths):
                     try:
                         model = call_model(opt).cuda()
                         model.eval()
+                        
                         params = count_params(model)
                         print(f'  Params: {params:.2f}M')
                     except Exception as e:

@@ -332,69 +332,18 @@ if __name__ == '__main__':
 
 
     opt.training_mode=True
-    opt.inference_mode=True
     opt.treenet=False
 
+    if opt.component_selected=='ORIGINAL':
+        opt.inference_mode=True
+        experiment(opt)
 
-    opt.bottleneck_size={"Encoder_x4":3,
-                "Decoder_x4":18,
-                "Decoder_x8":16,
-                "Decoder_x16":16
-                }   
-    
-    experiments={'COMPONENTS': ['Encoder_x4', 'Decoder_x4', 'Decoder_x16', 'ORIGINAL'],"BATCH_SIZES": [8,16], "ARCHS": ['pvt', 'UNET', 'NestedUNET'], "INFERENCES": [True, False], "TREENET_MODES": [True, False]}
-
-    if opt.training_mode:
-        for batch_size in  experiments["BATCH_SIZES"]:
-            opt.batchsize=batch_size
-            opt.epoch=3
-            for component in experiments["COMPONENTS"]:
-                opt.component_selected = component
-
-                if component == "ORIGINAL":
-
-                    opt.inference_mode=True
-                    for treenet_mode in experiments["TREENET_MODES"]:
-                        opt.treenet=treenet_mode
-                        if treenet_mode==False:
-                            for arch in experiments["ARCHS"]:
-                                if arch=='pvt' and batch_size==8:
-                                    o=1
-                                elif arch=='UNET' and batch_size==8:  
-                                    o=1
-                                else:
-                                    opt.arch=arch
-
-                                    print(opt.arch,treenet_mode,batch_size)
-                                    
-                                    experiment(opt)
-                
-                else:
-                    print("Side components")
-                    if batch_size==8:
-                        o=1
-                    else:  
-                        print(component,treenet_mode,batch_size)
-
-                        opt.treenet=True
-                        opt.batchsize=opt.batchsize*4
-                        opt.inference_mode=False
-                        experiment_prep(opt)
-                        model = call_model(opt).cuda() 
-
-
-                        
-                        train_loader = get_loader(opt.train_path+'images/', opt.train_path+'masks/',  batchsize=opt.batchsize, trainsize=opt.trainsize,args=opt,
-                                    augmentation=opt.augmentation)
-                        
-                        image_root = '{}/images/'.format(opt.valid_path)
-                        gt_root = '{}/masks/'.format(opt.valid_path)
-
-                        valid_loader = get_loader(image_root, gt_root,  batchsize=opt.batchsize, trainsize=opt.trainsize,args=opt,
-                                    augmentation=False)
-                        
-                        # valid_loader = test_dataset(image_root, gt_root, opt.trainsize,opt)
-                        components_exp(opt, model,train_loader,valid_loader)       
+    else:
+        opt.treenet=True
+        opt.batchsize=opt.batchsize*4
+        opt.inference_mode=False
+        experiment_prep(opt)
+        model = call_model(opt).cuda() 
 
     opt.component_selected='ORIGINAL'
     opt.inference_mode=True
@@ -403,9 +352,72 @@ if __name__ == '__main__':
         'CVC-ClinicDB': './dataset/TestDataset/CVC-ClinicDB/',
     }
 
-    
-
     run_benchmark(opt,dataset_paths)
+    
+    # train_loader = get_loader(opt.train_path+'images/', opt.train_path+'masks/',  batchsize=opt.batchsize, trainsize=opt.trainsize,args=opt,
+    #             augmentation=opt.augmentation)
+    
+    # image_root = '{}/images/'.format(opt.valid_path)
+    # gt_root = '{}/masks/'.format(opt.valid_path)
+
+    # valid_loader = get_loader(image_root, gt_root,  batchsize=opt.batchsize, trainsize=opt.trainsize,args=opt,
+    #             augmentation=False)
+    
+    # # valid_loader = test_dataset(image_root, gt_root, opt.trainsize,opt)
+    # components_exp(opt, model,train_loader,valid_loader) 
+    
+    # opt.bottleneck_size={"Encoder_x4":3,
+    #             "Decoder_x4":18,
+    #             "Decoder_x8":16,
+    #             "Decoder_x16":16
+    #             }   
+    
+    # experiments={'COMPONENTS': ['Encoder_x4', 'Decoder_x4', 'Decoder_x16', 'ORIGINAL'],"BATCH_SIZES": [8,16], "ARCHS": ['pvt', 'UNET', 'NestedUNET'], "INFERENCES": [True, False], "TREENET_MODES": [True, False]}
+
+    # if opt.training_mode:
+    #     for batch_size in  experiments["BATCH_SIZES"]:
+    #         opt.batchsize=batch_size
+    #         for component in experiments["COMPONENTS"]:
+    #             opt.component_selected = component
+
+    #             if component == "ORIGINAL":
+
+    #                 opt.inference_mode=True
+    #                 for treenet_mode in experiments["TREENET_MODES"]:
+    #                     opt.treenet=treenet_mode
+    #                     for arch in experiments["ARCHS"]:
+                
+    #                         opt.arch=arch
+
+    #                         print(opt.arch,treenet_mode,batch_size)
+                            
+    #                         experiment(opt)
+                
+    #             else:
+            
+    #                 print(component,treenet_mode,batch_size)
+
+    #                 opt.treenet=True
+    #                 opt.batchsize=opt.batchsize*4
+    #                 opt.inference_mode=False
+    #                 experiment_prep(opt)
+    #                 model = call_model(opt).cuda() 
+
+
+                    
+    #                 train_loader = get_loader(opt.train_path+'images/', opt.train_path+'masks/',  batchsize=opt.batchsize, trainsize=opt.trainsize,args=opt,
+    #                             augmentation=opt.augmentation)
+                    
+    #                 image_root = '{}/images/'.format(opt.valid_path)
+    #                 gt_root = '{}/masks/'.format(opt.valid_path)
+
+    #                 valid_loader = get_loader(image_root, gt_root,  batchsize=opt.batchsize, trainsize=opt.trainsize,args=opt,
+    #                             augmentation=False)
+                    
+    #                 # valid_loader = test_dataset(image_root, gt_root, opt.trainsize,opt)
+    #                 components_exp(opt, model,train_loader,valid_loader)       
+
+
         
     
 
